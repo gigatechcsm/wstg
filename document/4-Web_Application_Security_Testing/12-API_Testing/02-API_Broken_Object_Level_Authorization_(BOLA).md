@@ -8,7 +8,7 @@
 
 Broken Object Level Authorization (BOLA) occurs when an API does not properly enforce authorization checks for each object accessed by the client. Attackers can manipulate object identifiers in API requests (such as IDs, GUIDs, or tokens) to access or modify resources they are not authorized to. This vulnerability is critical in APIs due to their direct access to underlying objects and the growing prevalence of APIs in modern applications.
 
-Exploiting BOLA can lead to unauthorized access to sensitive data, user impersonation, horizontal privilege escalation (accessing other users' resources), and vertical privilege escalation (gaining unauthorized admin-level access). It is particularly common in APIs that expose object identifiers in requests.
+Exploiting BOLA can lead to unauthorized access to sensitive data, user impersonation, horizontal privilege escalation (accessing other users' resources), and vertical privilege escalation (gaining unauthorized admin-level access).
 
 ## Test Objectives
 
