@@ -28,13 +28,15 @@ Example:\
 
 With the knowledge gained in the previous step, review and collect third-party object identifiers (e.g. user IDs, orders IDs etc) that can be used subsequently in the object identifiers manipulation.
 
-Additionaly, generate a list of potential IDs for brute-force or depending on the application context, utilize two different accounts to perform the tests.
+Additionaly, generate a list of potential IDs for brute-force. For example, if an API is retrieving a purchase order from an authenticated user, generate various order IDs for testing.
 
 ### Manipulate Object Identifiers in API Requests
 
 With the goal to determine if users can access or modify objects they do not own by altering object identifiers in API request, change the object identifier (e.g., user ID, order ID) in the URL or request body.
   
   Example: Modify a request like `GET /api/users/123/profile` (where 123 is the current user ID) to `GET /api/users/124/profile` (where 124 is another user's ID).
+
+Depending on the application context, utilize two different accounts to perform the tests. With an account A, create resources that exclusively belongs to that account (e.g. purchase order) and with an account B, try to access the resource from account A (e.g. purchase order).
 
 ### Test Object-Level Access with Different HTTP Methods
 
@@ -48,7 +50,7 @@ Test various **HTTP methods** for BOLA vulnerabilities:
 
 ### Test BOLA in GraphQL APIs
 
-For **GraphQL APIs**, send a query with a modified object ID in the query parameters:
+For **GraphQL APIs**, send a query with a modified object ID in the query parameters (see [Testing GraphQL](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL)):
 
 Example:
 
@@ -93,3 +95,4 @@ To prevent BOLA, implement the following mitigations:
 
 - [OWASP API Security Top 10: BOLA](https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/)
 - [OWASP Testing Guide: Testing for Insecure Direct Object References (IDOR)](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/05-Authorization_Testing/04-Testing_for_Insecure_Direct_Object_References)
+- [OWASP Testing Guide: Testing for GraphQL](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL)  
