@@ -18,7 +18,7 @@ Exploiting BOLA can lead to unauthorized access to sensitive data, user imperson
 
 ### Understand API Endpoints and Object References
 
-Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **OWASP ZAP**, **Postman**) to identify endpoints that accept object identifiers. These could be in the form of **IDs**, **UUIDs**, or other references.
+Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **OWASP ZAP**) to identify endpoints that accept object identifiers. These could be in the form of **IDs**, **UUIDs**, or other references.
 
 Example:\
      `GET /api/users/{user_id}`\
@@ -28,7 +28,7 @@ Example:\
 
 With the knowledge gained in the previous step, review and collect third-party object identifiers (e.g. user IDs, orders IDs etc) that can be used subsequently in the object identifiers manipulation.
 
-Additionaly, one can generate a list of potential IDs for brute-force or depending on the application context, utilize two different accounts to perform the tests.
+Additionaly, generate a list of potential IDs for brute-force or depending on the application context, utilize two different accounts to perform the tests.
 
 ### Manipulate Object Identifiers in API Requests
 
