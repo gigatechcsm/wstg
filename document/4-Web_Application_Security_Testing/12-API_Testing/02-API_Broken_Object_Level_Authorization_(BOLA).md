@@ -6,7 +6,7 @@
 
 ## Summary
 
-Broken Object Level Authorization (BOLA) occurs when an API does not properly enforce authorization checks for each object accessed by the client. Attackers can manipulate object identifiers in API requests (such as IDs, GUIDs, or tokens) to access or modify resources they are not authorized to. This vulnerability is critical in APIs due to their direct access to underlying objects and the growing prevalence of APIs in modern applications.
+Broken Object Level Authorization (BOLA) occurs when an API does not properly enforce authorization checks for each object accessed by the client. Attackers can manipulate object identifiers in API requests (such as IDs, GUIDs, or tokens) to access or modify resources they are not authorized to. This vulnerability is critical in APIs due to their direct access to underlying objects and the prevalence of APIs in modern applications.
 
 Exploiting BOLA can lead to unauthorized access to sensitive data, user impersonation, horizontal privilege escalation (accessing other users' resources), and vertical privilege escalation (gaining unauthorized admin-level access).
 
@@ -18,7 +18,7 @@ Exploiting BOLA can lead to unauthorized access to sensitive data, user imperson
 
 ### Understand API Endpoints and Object References
 
-Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **OWASP ZAP**) to identify endpoints that accept object identifiers. These could be in the form of **IDs**, **UUIDs**, or other references.
+Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **OWASP ZAP**) to identify endpoints that accept object identifiers of interest. These could be in the form of **IDs**, **UUIDs**, or other references.
 
 Example:\
      `GET /api/users/{user_id}`\
@@ -28,7 +28,7 @@ Example:\
 
 With the knowledge gained in the previous step, review and collect third-party object identifiers (e.g. user IDs, orders IDs etc) that can be used subsequently in the object identifiers manipulation.
 
-Additionaly, generate a list of potential IDs for brute-force. For example, if an API is retrieving a purchase order from an authenticated user, generate various order IDs for testing.
+Additionaly, generate a list of potential object identifiers IDs for brute-force. For example, if an API is retrieving a purchase order from an authenticated user, generate various purchase order IDs for testing.
 
 ### Manipulate Object Identifiers in API Requests
 
