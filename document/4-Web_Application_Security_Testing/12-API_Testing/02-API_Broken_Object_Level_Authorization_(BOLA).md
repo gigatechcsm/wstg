@@ -50,7 +50,7 @@ Test various **HTTP methods** for BOLA vulnerabilities:
 
 For **GraphQL APIs**, send a query with a modified object ID in the query parameters:
 
-Example: 
+Example:
 
 `query { user(id: "124") { name, email } }`.
 
@@ -58,7 +58,7 @@ Example:
 
 Test if the API allows unauthorized **bulk access** to objects. This could happen in endpoints that return lists of objects.
 
-Example: 
+Example:
 
 `GET /api/users` returns data for all users instead of only the authenticated user’s data.
 
