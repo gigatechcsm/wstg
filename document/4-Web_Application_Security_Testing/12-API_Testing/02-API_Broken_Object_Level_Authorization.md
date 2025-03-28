@@ -43,9 +43,7 @@ Depending on the application context, utilize two different accounts to perform 
 Test various **HTTP methods** for BOLA vulnerabilities:
 
 - **GET**: Try accessing unauthorized objects by manipulating the object ID in the request.
-
 - **POST/PUT/PATCH**: Attempt to create or modify objects that belong to other users.
-
 - **DELETE**: Try to delete an object owned by another user.
 
 ### Test BOLA in GraphQL APIs
@@ -63,9 +61,7 @@ Example: `GET /api/users` returns data for all users instead of only the authent
 ## Indicators of BOLA
 
 - **Successful exploitation**: If modifying an object ID in the request returns data or allows actions on objects that belong to other users, the API is vulnerable to BOLA.
-
 - **Error responses**: Properly secured APIs in general would return `403 Forbidden` or `401 Unauthorized` for unauthorized object access. A `200 OK` response for another user's object indicates BOLA.
-
 - **Inconsistent responses**: If some endpoints enforce authorization and others do not, it points to incomplete or inconsistent security controls.
 
 ## Remediations
@@ -73,11 +69,8 @@ Example: `GET /api/users` returns data for all users instead of only the authent
 To prevent BOLA, implement the following mitigations:
 
 - **Object Ownership Checks**: Ensure that object-level authorization checks are performed for every API request. Always verify that the user making the request is authorized to access the requested object.
-
 - **Role-Based Access Control (RBAC)**: Implement RBAC policies that define which roles can access or modify specific objects.
-
 - **Least Privilege Principle**: Apply the principle of least privilege to ensure that users can only access the minimum set of objects they need for their role.
-
 - **Use UUIDs or Non-Sequential IDs**: Prefer non-predictable, non-sequential object identifiers (e.g., **UUIDs** instead of simple integers) to make enumeration and brute-force attacks harder.
 
 ## Tools
