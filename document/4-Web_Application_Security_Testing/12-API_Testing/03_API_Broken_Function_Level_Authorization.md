@@ -20,7 +20,7 @@ Exploiting BFLA can lead to serious consequences such as **privilege escalation*
 
 ### Identify Function-Level Endpoints
 
-Review API documentation (e.g. OpenAPI specification) or inspect API traffic using an interception proxy (e.g., **Burp Suite**, **Postman**, **OWASP ZAP**) to identify different function-level endpoints. These might include:
+Review API documentation (e.g. OpenAPI specification) or inspect API traffic using an interception proxy (e.g., **Burp Suite**, **Postman**, **ZAP**) to identify different function-level endpoints. These might include:
   
 - **Administrative functions** (e.g., `/api/admin/deleteUser`, `/api/admin/getAllUsers`)
 
@@ -39,13 +39,13 @@ Log in as a lower-privilege user (e.g., a regular user or guest) and send reques
 Example:
 As a **regular user**, send a request to the following admin endpoint:
 
-    ```
+    
     POST /api/admin/deleteUser
     Authorization: Bearer <regular_user_token>
     {
       "userId": "12345"
     }
-    ```
+    
     
 ### Test Function-Level Access with Different HTTP Methods
 
@@ -69,21 +69,19 @@ In **GraphQL APIs**, test if a user can invoke functions restricted to higher-pr
 
 Example:
 
-    ```graphql
+    graphql
     mutation {
       deleteUser(id: "12345") {
         success
       }
     }
-    ```
+    
 
 ## Indicators of BFLA
 
-- **Successful exploitation**: If modifying an object ID in the request returns data or allows actions on objects that belong to other users, the API is vulnerable to BOLA.
-
-- **Error responses**: Properly secured APIs in general would return `403 Forbidden` or `401 Unauthorized` for unauthorized object access. A `200 OK` response for another user's object indicates BOLA.
-
-- **Inconsistent responses**: If some endpoints enforce authorization and others do not, it points to incomplete or inconsistent security controls.
+- **Successful exploitation**: If a lower-privilege user (e.g., regular user or guest) can execute high-privilege functions or perform actions reserved for other roles (e.g., admin).
+- **Inconsistent enforcement**: Some endpoints enforce role-based restrictions while others do not, which indicates inconsistent security controls.
+- **Unexpected HTTP Status Codes**: Receiving a `200 OK` status when invoking restricted functions rather than the expected `403 Forbidden` or `401 Unauthorized`.
 
 ## Remediations
 
