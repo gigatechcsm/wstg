@@ -39,7 +39,6 @@ Log in as a lower-privilege user (e.g., a regular user or guest) and send reques
 Example:
 As a **regular user**, send a request to the following admin endpoint:
 
-    
     POST /api/admin/deleteUser
     Authorization: Bearer <regular_user_token>
     {
@@ -75,14 +74,12 @@ Example:
         success
       }
     }
-    
 
 ## Indicators of BFLA
 
 - **Successful exploitation**: If a lower-privilege user (e.g., regular user or guest) can execute high-privilege functions or perform actions reserved for other roles (e.g., admin).
 - **Error responses**: Properly secured APIs in general would return `403 Forbidden` or `401 Unauthorized` when invoked restricted functions instead of a `200 OK` response.
 - **Inconsistent enforcement**: Some endpoints enforce role-based restrictions while others do not, which indicates inconsistent security controls.
-
 
 ## Remediations
 
