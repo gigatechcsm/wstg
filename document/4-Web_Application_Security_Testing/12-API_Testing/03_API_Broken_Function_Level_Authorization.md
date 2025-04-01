@@ -28,7 +28,7 @@ Review API documentation (e.g. OpenAPI specification) or inspect API traffic usi
 
 - **Critical functions** for users (e.g., `/api/user/withdrawFunds`)
 
-Focus on **functionality differences** between different user roles (e.g., regular user, admin, guest) and endpoints that offer more sensitive capabilities.
+Focus on **functionality differences** between different user roles (e.g., regular user, admin, partner, guest) and endpoints that offer more sensitive capabilities.
 
 ### Manipulate Role-Based Access Controls
 
@@ -51,7 +51,7 @@ As a **regular user**, send a request to the following admin endpoint:
 
 Test various **HTTP methods** for BFLA vulnerabilities:
 
-- **GET**: Attempt to access information available only to high-privilege users (e.g., admins).
+- **GET**: Attempt to access information available only to high-privilege users (e.g., administrators).
 
 Example: `GET /api/admin/getAllUsers`
 
@@ -80,8 +80,9 @@ Example:
 ## Indicators of BFLA
 
 - **Successful exploitation**: If a lower-privilege user (e.g., regular user or guest) can execute high-privilege functions or perform actions reserved for other roles (e.g., admin).
+- **Error responses**: Properly secured APIs in general would return `403 Forbidden` or `401 Unauthorized` when invoked restricted functions instead of a `200 OK` response.
 - **Inconsistent enforcement**: Some endpoints enforce role-based restrictions while others do not, which indicates inconsistent security controls.
-- **Unexpected HTTP Status Codes**: Receiving a `200 OK` status when invoking restricted functions rather than the expected `403 Forbidden` or `401 Unauthorized`.
+
 
 ## Remediations
 
@@ -89,15 +90,14 @@ To prevent BFLA vulnerabilities, implement the following mitigations:
 
 - **Enforce Role-Based Access Control (RBAC)**: Ensure that the API checks user roles and permissions at the **function level** before allowing access to certain operations. Only authorized roles should be allowed to invoke sensitive functions.
 - **Least Privilege Principle**: Apply the principle of least privilege by ensuring that users can only access the minimum set of functions they need for their role.
-- **Implement Authorization Middleware**: Use authorization middleware that checks the user's role and permissions for each function before processing the request.
 - **Centralized Access Control Logic**: Use centralized access control logic to ensure consistency across all API endpoints. This avoids gaps where some functions may lack proper access checks.
 
 ## Tools
 
-- **ZAP**: Automated scanners or manual proxy tools can help test object references in API requests.
-- **Burp Suite**: Use the **Repeater** or **Intruder** tools to manipulate object IDs and send multiple requests to test access control.
-- **Postman**: Send requests with altered object IDs and observe the responses.
-- **Fuzzing Tools**: Use fuzzers to brute-force object IDs and check for unauthorized access.
+- **ZAP**: Use automated scanners and manual proxy tools to inspect API requests and responses for BFLA vulnerabilities.
+- **Burp Suite**: Use **Repeater** or **Intruder** to send requests as lower-privilege users to test if function-level restrictions are enforced.
+- **Postman**: Manually send API requests as different user roles and observe responses.
+- **Fuzzing Tools**: Use fuzzers to test different function parameters and methods to identify potential authorization weaknesses.
 
 ## References
 
