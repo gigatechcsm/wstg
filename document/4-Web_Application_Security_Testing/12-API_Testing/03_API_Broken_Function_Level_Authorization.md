@@ -10,17 +10,17 @@ Broken Function Level Authorization (BFLA) occurs when an API improperly enforce
 
 BFLA commonly arises when APIs expose multiple endpoints that serve different user roles (e.g., user vs. admin) but fail to restrict access to these functions based on the user's authorization level.
 
-Exploiting BFLA can lead to serious consequences such as **privilege escalation**, unauthorized access to sensitive functions (e.g., administrative operations), or exposure of critical functionalities that should only be accessible to specific user roles.
+Exploiting BFLA can lead to serious consequences such as privilege escalation, unauthorized access to sensitive functions (e.g., administrative operations), or exposure of critical functionalities that should only be accessible to specific user roles.
 
 ## Test Objectives
 
-- The goal of this test is to determine if the API enforces **role- or privilege-based access control** to restrict users from accessing or executing functions they are not authorized to use. This ensures that function-level security boundaries are properly enforced.
+- The goal of this test is to determine if the API enforces **role or privilege-based access control** to restrict users from accessing or executing functions they are not authorized to use. This ensures that function-level security boundaries are properly enforced.
 
 ## How to Test
 
 ### Identify Function-Level Endpoints
 
-Review API documentation (e.g. OpenAPI specification) or inspect API traffic using an interception proxy (e.g., **Burp Suite**, **Postman**, **ZAP**) to identify different function-level endpoints. These might include:
+Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **ZAP**) to identify different function-level endpoints. These might include:
   
 - **Administrative functions** (e.g., `/api/admin/deleteUser`, `/api/admin/getAllUsers`)
 
@@ -34,10 +34,9 @@ Focus on **functionality differences** between different user roles (e.g., regul
 
 Try to access or perform sensitive operations exposed in API endpoints that should be restricted based on user roles.
 
-Log in as a lower-privilege user (e.g., a regular user or guest) and send requests to endpoints that perform sensitive actions reserved for higher-privilege roles (e.g., admin actions).
+Log in as a lower-privilege user (e.g., guest or regular user) and send requests to endpoints that perform sensitive actions reserved for higher-privilege roles (e.g., admin).
 
-Example:
-As a **regular user**, send a request to the following admin endpoint:
+Example: as a **regular user**, send a request to the following administrative endpoint to delete a random user:
 
     POST /api/admin/deleteUser
     Authorization: Bearer <regular_user_token>
@@ -100,3 +99,4 @@ To prevent BFLA vulnerabilities, implement the following mitigations:
 
 - [OWASP API Security Top 10: BFLA](https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/)
 - [OWASP Testing Guide: Testing for Business Logic Vulnerabilities](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/05-Authorization_Testing/03-Testing_for_Privilege_Escalation)
+- [OWASP Testing Guide: Testing for GraphQL](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL)
