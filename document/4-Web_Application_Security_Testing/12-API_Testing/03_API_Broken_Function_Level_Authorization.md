@@ -43,8 +43,7 @@ Example: as a **regular user**, send a request to the following administrative e
     {
       "userId": "12345"
     }
-    
-    
+        
 ### Test Function-Level Access with Different HTTP Methods
 
 Test various **HTTP methods** for BFLA vulnerabilities:
