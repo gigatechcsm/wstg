@@ -21,7 +21,7 @@ Exploiting BFLA can lead to serious consequences such as privilege escalation, u
 ### Identify Function-Level Endpoints
 
 Review API documentation (e.g. OpenAPI specification), traffic, or use an interception proxy (e.g., **Burp Suite**, **ZAP**) to identify different function-level endpoints. These might include:
-  
+
 - **Administrative functions** (e.g., `/api/admin/deleteUser`, `/api/admin/getAllUsers`)
 
 - **Role-based operations** (e.g., `/api/admin/promoteUser`, `/api/user/createOrder`)
@@ -38,12 +38,12 @@ Log in as a lower-privilege user (e.g., guest or regular user) and send requests
 
 Example: as a **regular user**, send a request to the following administrative endpoint to delete a random user:
 
-    POST /api/admin/deleteUser
-    Authorization: Bearer <regular_user_token>
-    {
-      "userId": "12345"
-    }
-        
+```
+POST /api/admin/deleteUser
+Authorization: Bearer <regular_user_token>
+{ "userId": "12345" }
+```
+
 ### Test Function-Level Access with Different HTTP Methods
 
 Test various **HTTP methods** for BFLA vulnerabilities:
@@ -64,14 +64,7 @@ Example: `DELETE /api/admin/deleteUser/12345`
 
 In **GraphQL APIs**, test if a user can invoke functions restricted to higher-privilege roles by modifying GraphQL queries.
 
-Example:
-
-    graphql
-    mutation {
-      deleteUser(id: "12345") {
-        success
-      }
-    }
+Example: `mutation { deleteUser(id: "12345") { success } }`.
 
 ## Indicators of BFLA
 
@@ -99,3 +92,4 @@ To prevent BFLA vulnerabilities, implement the following mitigations:
 - [OWASP API Security Top 10: BFLA](https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/)
 - [OWASP Testing Guide: Testing for Privilege Escalation](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/05-Authorization_Testing/03-Testing_for_Privilege_Escalation)
 - [OWASP Testing Guide: Testing for GraphQL](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL)
+- 
