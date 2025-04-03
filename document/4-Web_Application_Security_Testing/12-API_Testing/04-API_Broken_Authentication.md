@@ -46,7 +46,7 @@ The objective of this test is to verify that the API enforces strong and secure 
     - If the API provides distinct error messages for valid vs. invalid usernames (e.g., "Invalid username" vs. "Invalid password"), this allows attackers to enumerate usernames and indicates a vulnerability.
 
 - **Test for Brute Force Protection**:
-  - Attempt to log in with various password combinations using tools like **Burp Suite**, **Hydra**, or **OWASP ZAP** to simulate brute force attacks.
+  - Attempt to log in with various password combinations using tools like **Burp Suite**, **Hydra**, or **ZAP** to simulate brute force attacks.
   - The API should implement **rate-limiting** or account lockout mechanisms after a certain number of failed login attempts.
 
 ### Step 2: Test for Session Management Flaws
