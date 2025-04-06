@@ -143,7 +143,8 @@ The objective of this test is to verify that the API enforces strong and secure 
 To prevent broken authentication vulnerabilities, implement the following best practices:
 
 - **Enforce Strong Password Policies**: Require passwords of sufficient length and complexity, and avoid allowing common passwords.
-- **Rate-Limiting and Lockout Mechanisms**: Implement rate-limiting and lockout mechanisms after repeated failed login attempts to prevent brute force
+- **Rate-Limiting and Lockout Mechanisms**: Implement rate-limiting and lockout mechanisms after repeated failed login attempts to prevent brute force.
+- **Follow security practices for JWT/OAuth/OpenID**: Follow security practices when utilizing Oauth/OpenID standards and JWT tokens.
 
 ## Tools for Testing Broken Authentication
 
