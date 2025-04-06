@@ -26,7 +26,7 @@ Exploiting broken authentication can lead to severe consequences such as:
 
 The objective of this test is to verify that the API enforces strong and secure authentication mechanisms, ensuring only authorized users can access protected resources. The test should also ensure that the API is resistant to common authentication attacks, such as brute force, session hijacking, or token manipulation.
 
-## How to Test for Broken Authentication
+## How to Test
 
 ### Step 1: Test Authentication Mechanism (Login Flow)
 
