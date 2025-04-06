@@ -146,7 +146,7 @@ To prevent broken authentication vulnerabilities, implement the following best p
 - **Rate-Limiting and Lockout Mechanisms**: Implement rate-limiting and lockout mechanisms after repeated failed login attempts to prevent brute force.
 - **Follow security practices for JWT/OAuth/OpenID**: Follow security practices when utilizing Oauth/OpenID standards and JWT tokens.
 
-## Tools for Testing Broken Authentication
+## Tools
 
 - **Burp Suite**: Use **Intruder** or **Repeater** to test authentication endpoints for vulnerabilities such as weak passwords, brute force, and token manipulation.
 - **Hydra**: A powerful tool to automate brute force attacks against login endpoints.
