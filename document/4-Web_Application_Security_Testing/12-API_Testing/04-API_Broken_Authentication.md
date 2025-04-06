@@ -59,10 +59,6 @@ The objective of this test is to verify that the API enforces strong and secure 
   - Log in to the API and leave the session idle for a while (e.g., 10-15 minutes).
   - After the session expires, attempt to use the old session token to access protected resources. The API should invalidate the session and require re-authentication.
 
-- **Token Replay Attacks**:
-  - Capture a session token and attempt to reuse it (token replay) after logging out or after a new token is issued.
-  - The API should detect token reuse and deny access, preventing token replay attacks.
-
 ### Step 3: Test for Token-Based Authentication Issues
 
 #### JWT Token Validation and Token Forgery
