@@ -22,7 +22,7 @@ Exploiting broken authentication can lead to severe consequences such as:
 - **Account takeovers**: Attackers can gain unauthorized access to user accounts, potentially leading to data theft, unauthorized transactions, or manipulation of sensitive information.
 - **Privilege escalation**: Attackers might escalate their privileges by exploiting flaws in the authentication mechanism, allowing access to sensitive resources.
 
-## Objective
+## Test Objectives
 
 The objective of this test is to verify that the API enforces strong and secure authentication mechanisms, ensuring only authorized users can access protected resources. The test should also ensure that the API is resistant to common authentication attacks, such as brute force, session hijacking, or token manipulation.
 
